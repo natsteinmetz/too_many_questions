@@ -1,5 +1,10 @@
 TooManyQuestions::Application.routes.draw do
-  resources :questions
+  
+	root :to => "questions#index"
+
+	resources :questions do
+		resources :answers
+	end
 
 
   # The priority is based upon order of creation:
