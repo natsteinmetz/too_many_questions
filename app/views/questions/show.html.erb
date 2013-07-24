@@ -24,7 +24,7 @@
 <ul id="answers">
 	<% @question.answers.each do |answer| %>
 		<li>
-		<%= link_to answer.date, [:question, answer] %> - <%= answer.description %>
+		<%= answer.date %>: <%= link_to answer.description, [@question, answer] %>
 		</li>
 		<% end %>
 	</ul>
