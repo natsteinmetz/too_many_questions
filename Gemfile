@@ -48,3 +48,4 @@ group :test do
  	gem "launchy", '~> 2.3.0'
 end
 
+gem 'devise', '2.1.0'
