@@ -7,6 +7,13 @@ class CreateAnswers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_table :answers_users, :id => false do |t|
+      t.integer :answer_id
+      t.integer :user_id
+    end
+
     add_index :answers, :question_id
+
   end
 end

@@ -20,8 +20,8 @@ feature "Creating Answers" do
 		fill_in "Description", :with => "Sample Answer"
 		click_button "Create Answer"
 		page.should have_content("Answer has been created.")
-		within("#answer #author") do
-			page.should have_content("Created by too_many_questions@example.com")
+		within("#answer #authors") do
+			page.should have_content("too_many_questions@example.com")
 		end
 	end
 	scenario "Creating an answer without valid attributes fails" do

@@ -1,8 +1,14 @@
 <div id="answer">
-	<h4><%= @answer.date %></h4>
-	<span id="author">Created by <%= @answer.user.email %></span>
+  <h4><%= @answer.date %></h4>
+  <div id="authors">Contributors:
+    <ul>
+      <%= @answer.users.each do |user| %>
+        <li><%= user.email %>
+      <% end %>
+    </ul>
+  </div>
 	<%= link_to "Edit Answer", [:edit, @question, @answer] %>
-	<%= link_to "Delete Answer", [@question, @answer], :method => :delete, 
+	<%= link_to "Delete Answer", [@question, @answer], :method => :delete,
 				:confirm => "Are you sure you want to delete this ticket?" %>
 	<%= simple_format(@answer.description) %>
 </div>

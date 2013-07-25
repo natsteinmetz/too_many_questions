@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(:version => 20130724081108) do
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
 
+  create_table "answers_users", :id => false, :force => true do |t|
+    t.integer "answer_id"
+    t.integer "user_id"
+  end
+
   create_table "questions", :force => true do |t|
     t.string   "name"
     t.string   "topic"

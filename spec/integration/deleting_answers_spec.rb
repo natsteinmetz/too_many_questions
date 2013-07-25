@@ -5,10 +5,10 @@ feature "Deleting answers" do
 	let!(:user) {Factory(:confirmed_user)}
 	let!(:answer) do
 		answer = Factory(:answer, :question => question)
-		answer.update_attribute(:user, user)
+		answer.update_attribute(:users, [user])
 		answer
 	end
-	
+
 	before do
 		sign_in_as!(user)
 		visit '/'

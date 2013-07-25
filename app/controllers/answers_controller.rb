@@ -3,13 +3,14 @@ class AnswersController < ApplicationController
 	before_filter :find_question
 	before_filter :find_answer, :only => [:show, :edit, :update, :destroy]
 
-	def new 
+	def new
 		@answer = @question.answers.build
 	end
-	def create
+
+  def create
 		@answer = @question.answers.build(params[:answer])
-		@answer.user = current_user
-		if @answer.save
+    if @answer.save
+      @answer.users << current_user
 			flash[:notice] = "Answer has been created."
 			redirect_to [@question, @answer]
 		else
@@ -17,11 +18,14 @@ class AnswersController < ApplicationController
 			render :action => "new"
 		end
 	end
-	def show
+
+  def show
 	end
-	def edit
+
+  def edit
 	end
-	def update 
+
+  def update
 		if @answer.update_attributes(params[:answer])
 			flash[:notice] = "Answer has been updated."
 			redirect_to [@question, @answer]
@@ -30,7 +34,8 @@ class AnswersController < ApplicationController
 			render :action => "edit"
 		end
 	end
-	def destroy
+
+  def destroy
 		@answer.destroy
 		flash[:notice] = "Answer has been deleted."
 		redirect_to @question
